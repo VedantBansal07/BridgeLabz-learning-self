@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        header{
+            flex: 1;
+           
+            align-self: flex-start;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding-left: 10px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            background-color: whitesmoke;
+            margin-bottom: 0px;
+            box-shadow: 0 5px 8px rgba(0,0,0,.20);
+        }
+        header input{
+            border: 1px solid;
+            padding-left: 15px ;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 15px;
+
+        }
+        header h3{
+            margin: 0;
+            margin-left: 15px;
+            margin-right: auto;
+        }
+        header img{
+            width: 35px;
+            height: 35px;
+            border-radius: 100px;
+            object-fit: cover;
+            margin-left: auto;
+            margin-right: 15px;
+            
+        }
+        body{
+            margin: 0;
+        }
+        .main{
+            min-height: 100vh;
+            display: flex;
+
+        }
+        aside{
+            background-color: #374151;
+            width: 180px;
+            color: white;
+        }
+        .nav{
+            display: flex;
+            gap: 25px;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+        aside h2{
+            margin-left: 10px;
+            
+            margin-bottom: 50px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+        }
+        .nav a.active{
+            background-color: red;
+            border-right: 300px;
+            padding: 10px 15px;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <div class ="main">
+        <aside >
+            <h2>Instagram</h2>
+            <h6>DashBoard</h6>
+            <nav class =nav>
+                <a href="#">DashBoard</a>
+                <a href="#">DashBoard</a>
+                <a href="#">DashBoard</a>
+                <a href="#" class="active">DashBoard</a>
+                <a href="#">DashBoard</a>
+
+            </nav>
+        </aside>
+
+        <header>
+        <h3>User List</h3>
+        <input type="text" placeholder="Search">
+        <img src="https://imgs.search.brave.com/ZC61qv63iyv3iwW1dhePB6g8ADDU_Y2tlXTS4YMOrmE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDUv/MDA1Lzg0MC9zbWFs/bC91c2VyLWljb24t/aW4tdHJlbmR5LWZs/YXQtc3R5bGUtaXNv/bGF0ZWQtb24tZ3Jl/eS1iYWNrZ3JvdW5k/LXVzZXItc3ltYm9s/LWZvci15b3VyLXdl/Yi1zaXRlLWRlc2ln/bi1sb2dvLWFwcC11/aS1pbGx1c3RyYXRp/b24tZXBzMTAtZnJl/ZS12ZWN0b3IuanBn" alt="user_logo">
+        </header>
+    </div>
+
+
+</body>
+</html>
