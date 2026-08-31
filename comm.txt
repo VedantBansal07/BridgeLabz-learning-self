@@ -1,0 +1,116 @@
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install -y openjdk-25-jdk
+
+java -version
+
+readlink -f $(which java)
+check krna output -/usr/lib/jvm/java-21-openjdk-amd64/bin/java
+
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt update
+
+sudo apt install -y Jenkins
+
+sudo systemctl enable --now Jenkins
+
+sudo systemctl status Jenkins
+
+active running aaega toh localhost 8080 open krna
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install -y git curl wget python3 python3-pip python3-venv
+
+python3 --version
+pip3 --version
+
+mkdir flask-app
+cd flask-app
+
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install flask
+
+nano app.py
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello from Flask running on Ubuntu VM!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+python app.py
+
+sudo usermod -aG $USER Jenkins
+
+sudo systemctl restart Jenkins
+
+git init
+git add .
+git commit -m "Initial Flask app"
+
+pip freeze > requirements.txt
+
+nano Jenkinsfile
+
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone') {
+            steps {
+                git 'YOUR_GIT_REPOSITORY_URL'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Flask Test') {
+            steps {
+                sh '''
+                source venv/bin/activate
+                python app.py &
+                sleep 5
+                curl localhost:5000
+                '''
+            }
+        }
+    }
+}
+
+New Item
+ ↓
+Pipeline
+ ↓
+Pipeline script from SCM
+ ↓
+Git
+ ↓
+Repository URL
+ ↓
+Save
